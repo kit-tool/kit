@@ -1,5 +1,5 @@
 {
-  "productName": "tauri-test",
+  "productName": "kit",
   "version": "0.0.0",
   "identifier": "com.tauri.dev",
   "build": {
@@ -12,12 +12,13 @@
     "windows": [
       {
         "width": 800,
-        "height": 600,
+        "height": 70,
         "center": true,
         "decorations": false,
         "shadow": false,
         "transparent": true,
-        "skipTaskbar": true
+        "minHeight": 70,
+        "minWidth": 800
       }
     ],
     "security": {
