@@ -4,7 +4,7 @@
   "identifier": "com.tauri.dev",
   "build": {
     "beforeDevCommand": "pnpm dev",
-    "devUrl": "http://localhost:1420",
+    "devUrl": "http://localhost:2024",
     "beforeBuildCommand": "pnpm build",
     "frontendDist": "../dist"
   },
@@ -12,12 +12,11 @@
     "windows": [
       {
         "width": 800,
-        "height": 70,
+        "height": 60,
         "center": true,
         "decorations": false,
-        "shadow": false,
         "transparent": true,
-        "minHeight": 70,
+        "minHeight": 60,
         "minWidth": 800
       }
     ],
