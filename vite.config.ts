@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from 'tailwindcss';
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
@@ -18,4 +19,9 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
   },
+  css: {
+    postcss: {
+      plugins: [tailwindcss]
+    }
+  }
 }));
