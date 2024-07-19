@@ -12,12 +12,13 @@
     "windows": [
       {
         "width": 800,
-        "height": 60,
+        "height": 96,
         "center": true,
         "decorations": false,
         "transparent": true,
-        "minHeight": 60,
-        "minWidth": 800
+        "minHeight": 96,
+        "minWidth": 800,
+        "resizable": false
       }
     ],
     "security": {
