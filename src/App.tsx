@@ -8,6 +8,8 @@ import {
   User,
 } from "lucide-react";
 
+import { getCurrent, LogicalSize } from '@tauri-apps/api/window';
+
 import {
   Command,
   CommandEmpty,
@@ -18,16 +20,34 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { useState } from "react";
 
 function App() {
+  const [search, setSearch] = useState('');
+
+  function onValueChange(v: string) {
+    setWindowSize();
+    setSearch(v);
+  }
+
+  async function setWindowSize() {
+    let windowSize: LogicalSize;
+    if(search) {
+      windowSize = new LogicalSize(800, 400);
+    }else {
+      windowSize = new LogicalSize(800, 96);
+    }
+    await getCurrent().setSize(windowSize);
+  }
+
   return (
     <div className="h-screen">
       <div data-tauri-drag-region className="fixed h-3 w-screen top-0 left-0 z-10"></div>
       <Command className="rounded-lg border">
-        <CommandInput placeholder="你好，欢迎使用 Kit" />
-        {/* <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
+        <CommandInput value={search} onValueChange={onValueChange} autoFocus placeholder="你好，欢迎使用 Kit" />
+        <CommandList>
+          {/* <CommandEmpty>没有匹配的搜索项</CommandEmpty> */}
+          {/* <CommandGroup heading="Suggestions">
             <CommandItem>
               <Calendar className="mr-2 h-4 w-4" />
               <span>Calendar</span>
@@ -58,8 +78,8 @@ function App() {
               <span>Settings</span>
               <CommandShortcut>⌘S</CommandShortcut>
             </CommandItem>
-          </CommandGroup>
-        </CommandList> */}
+          </CommandGroup> */}
+        </CommandList>
       </Command>
     </div>
   );

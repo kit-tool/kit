@@ -13,6 +13,7 @@
     "menu:default",
     "tray:default",
     "shell:allow-open",
-    "window:allow-start-dragging"
+    "window:allow-start-dragging",
+    "window:allow-set-size"
   ]
 }
