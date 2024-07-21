@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="h-screen">
       <div data-tauri-drag-region className="fixed h-3 w-screen top-0 left-0 z-10"></div>
-      <Command className="rounded-lg border">
+      <Command className="border">
         <CommandInput value={search} onValueChange={onValueChange} autoFocus placeholder="你好，欢迎使用 Kit" />
         <CommandList>
           {/* <CommandEmpty>没有匹配的搜索项</CommandEmpty> */}

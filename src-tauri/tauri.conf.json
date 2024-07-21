@@ -11,6 +11,7 @@
   "app": {
     "windows": [
       {
+        "label": "search",
         "width": 800,
         "height": 96,
         "center": true,
