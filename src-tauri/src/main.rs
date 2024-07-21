@@ -1,7 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::tray::TrayIconBuilder;
+mod tray;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -14,10 +14,7 @@ fn main() {
         .plugin(tauri_plugin_shell::init())
         .setup(move |app| {
             let handle = app.handle();
-            let _ = TrayIconBuilder::with_id("search")
-                .tooltip("Kit")
-                .icon(app.default_window_icon().unwrap().clone())
-                .build(app);
+            tray::create_tray(handle)?;
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![greet])
