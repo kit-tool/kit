@@ -1,50 +1,30 @@
 import "./App.css";
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
-
-import { getCurrent, LogicalSize } from '@tauri-apps/api/window';
 
 import {
   Command,
-  CommandEmpty,
-  CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [search, setSearch] = useState('');
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   function onValueChange(v: string) {
-    setWindowSize();
+    // setWindowSize();
     setSearch(v);
   }
 
-  async function setWindowSize() {
-    let windowSize: LogicalSize;
-    if(search) {
-      windowSize = new LogicalSize(800, 400);
-    }else {
-      windowSize = new LogicalSize(800, 96);
-    }
-    await getCurrent().setSize(windowSize);
-  }
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [])
 
   return (
     <div className="h-screen">
       <div data-tauri-drag-region className="fixed h-3 w-screen top-0 left-0 z-10"></div>
       <Command className="border">
-        <CommandInput value={search} onValueChange={onValueChange} autoFocus placeholder="你好，欢迎使用 Kit" />
+        <CommandInput ref={inputRef} value={search} onValueChange={onValueChange} autoFocus placeholder="你好，欢迎使用 Kit" />
         <CommandList>
           {/* <CommandEmpty>没有匹配的搜索项</CommandEmpty> */}
           {/* <CommandGroup heading="Suggestions">

@@ -11,7 +11,7 @@
   "app": {
     "windows": [
       {
-        "label": "seach",
+        "label": "search",
         "width": 800,
         "height": 96,
         "center": true,
@@ -19,7 +19,8 @@
         "transparent": true,
         "minHeight": 96,
         "minWidth": 800,
-        "resizable": false
+        "resizable": false,
+        "skipTaskbar": true
       }
     ],
     "security": {
