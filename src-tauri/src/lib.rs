@@ -27,7 +27,7 @@ pub fn run_app() {
                         (monitor_size.width - window_size.width) / 2,
                         (monitor_size.height - window_size.height - 400) / 2,
                     );
-                    let _ = window.set_position(position);
+                    window.set_position(position)?;
                 }
             }
             Ok(())

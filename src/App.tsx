@@ -7,16 +7,44 @@ import {
   CommandFooter,
   CommandButton,
 } from "@/components/ui/command";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Logo } from "@/components/icon";
+import { getCurrent, LogicalSize } from "@tauri-apps/api/window";
+import { debounce } from "lodash";
 
 function App() {
   const [search, setSearch] = useState("");
 
   function onValueChange(v: string) {
-    // setWindowSize();
     setSearch(v);
+    setWindowSize(v);
   }
+
+  const setWindowSize = useCallback(
+    debounce(async (value: string) => {
+      const webview = getCurrent();
+      const webviewSize = await webview.innerSize();
+      const scale = await webview.scaleFactor();
+      console.log(webviewSize.height / scale, value.length, value);
+      if (value.length > 0 && webviewSize.height / scale < 500) {
+        webview.setSize(
+          new LogicalSize(
+            webviewSize.width / scale,
+            webviewSize.height / scale + 400
+          )
+        );
+      } else if (value.length === 0 && webviewSize.height / scale > 500) {
+        console.log('----')
+        webview.setSize(
+          new LogicalSize(
+            webviewSize.width / scale,
+            webviewSize.height / scale - 400
+          )
+        );
+      }
+    }, 200),
+    [search]
+  );
 
   return (
     <div className="h-screen">
