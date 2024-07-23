@@ -147,7 +147,7 @@ const CommandFooter = ({
   return (
     <div
       className={cn(
-        "w-full h-8 flex border-t",
+        "w-full h-10 p-2 flex justify-between items-center border-t",
         className
       )}
       {...props}
@@ -155,6 +155,22 @@ const CommandFooter = ({
   );
 };
 CommandFooter.displayName = "CommandFooter";
+
+const CommandButton = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLButtonElement>) => {
+  return (
+    <button 
+      className={cn(
+        "h-6 p-1 inline-flex items-center justify-center whitespace-nowrap hover:bg-accent rounded-sm text-xs text-primary",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+CommandButton.displayName = "CommandButton";
 
 export {
   Command,
@@ -167,4 +183,5 @@ export {
   CommandShortcut,
   CommandSeparator,
   CommandFooter,
+  CommandButton,
 };

@@ -13,11 +13,11 @@
       {
         "label": "search",
         "width": 800,
-        "height": 96,
+        "height": 106,
         "center": true,
         "decorations": false,
         "transparent": true,
-        "minHeight": 96,
+        "minHeight": 106,
         "minWidth": 800,
         "resizable": false,
         "skipTaskbar": true,
