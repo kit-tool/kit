@@ -6,6 +6,7 @@ import {
   CommandList,
   CommandFooter,
   CommandButton,
+  CommandEmpty,
 } from "@/components/ui/command";
 import { useCallback, useState } from "react";
 import { Logo } from "@/components/icon";
@@ -40,31 +41,33 @@ function App() {
           )
         );
       }
-    }, 200),
-    [search]
+    }, 100),
+    []
   );
 
   return (
     <div className="h-screen">
       <div
         data-tauri-drag-region
-        className="fixed h-3 w-screen top-0 left-0 z-10"
+        className="fixed h-8 w-screen top-0 left-0 z-10"
       ></div>
-      <Command className="border">
+      <Command shouldFilter={false} className="border">
         <CommandInput
           value={search}
           onValueChange={onValueChange}
           autoFocus
-          placeholder="Kit"
+          placeholder="欢迎使用 Kit"
         />
-        <CommandList></CommandList>
+        {
+          search.length === 0 ? <CommandList></CommandList> : <CommandList className="flex-1"></CommandList>
+        }
         <CommandFooter>
           <CommandButton>
             <Logo
               className="w-4 h-4 p-1 rounded-full bg-primary mr-1"
               color="#fff"
             />
-            
+            设置
           </CommandButton>
           <CommandButton>
             <Logo
