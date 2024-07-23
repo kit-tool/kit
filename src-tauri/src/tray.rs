@@ -14,6 +14,7 @@ use tauri_plugin_shell::ShellExt;
 /// * 关于 Kit
 /// * 系统设置
 /// * 退出 Kit
+#[allow(dead_code)]
 pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
     let help = MenuItem::with_id(app, "help", "帮助文档", true, None::<&str>)?;
     let dev = MenuItem::with_id(app, "dev", "开发文档", true, None::<&str>)?;
