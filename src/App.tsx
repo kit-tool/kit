@@ -25,7 +25,6 @@ function App() {
       const webview = getCurrent();
       const webviewSize = await webview.innerSize();
       const scale = await webview.scaleFactor();
-      console.log(webviewSize.height / scale, value.length, value);
       if (value.length > 0 && webviewSize.height / scale < 500) {
         webview.setSize(
           new LogicalSize(
@@ -34,7 +33,6 @@ function App() {
           )
         );
       } else if (value.length === 0 && webviewSize.height / scale > 500) {
-        console.log('----')
         webview.setSize(
           new LogicalSize(
             webviewSize.width / scale,
@@ -57,7 +55,7 @@ function App() {
           value={search}
           onValueChange={onValueChange}
           autoFocus
-          placeholder="你好，欢迎使用 Kit"
+          placeholder="Kit"
         />
         <CommandList></CommandList>
         <CommandFooter>
@@ -66,7 +64,7 @@ function App() {
               className="w-4 h-4 p-1 rounded-full bg-primary mr-1"
               color="#fff"
             />
-            设置
+            
           </CommandButton>
           <CommandButton>
             <Logo
