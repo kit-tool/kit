@@ -1,83 +1,15 @@
 import "./App.css";
 
-import {
-  Command,
-  CommandInput,
-  CommandList,
-  CommandFooter,
-  CommandButton,
-  CommandEmpty,
-} from "@/components/ui/command";
-import { useCallback, useState } from "react";
-import { Logo } from "@/components/icon";
-import { getCurrent, LogicalSize } from "@tauri-apps/api/window";
-import { debounce } from "lodash";
+import { Command, CommandSearch, CommandResult, CommandFooter } from './pages/command/command';
 
 function App() {
-  const [search, setSearch] = useState("");
-
-  function onValueChange(v: string) {
-    setSearch(v);
-    setWindowSize(v);
-  }
-
-  const setWindowSize = useCallback(
-    debounce(async (value: string) => {
-      const webview = getCurrent();
-      const webviewSize = await webview.innerSize();
-      const scale = await webview.scaleFactor();
-      if (value.length > 0 && webviewSize.height / scale < 500) {
-        webview.setSize(
-          new LogicalSize(
-            webviewSize.width / scale,
-            webviewSize.height / scale + 400
-          )
-        );
-      } else if (value.length === 0 && webviewSize.height / scale > 500) {
-        webview.setSize(
-          new LogicalSize(
-            webviewSize.width / scale,
-            webviewSize.height / scale - 400
-          )
-        );
-      }
-    }, 100),
-    []
-  );
 
   return (
-    <div className="h-screen">
-      <div
-        data-tauri-drag-region
-        className="fixed h-8 w-screen top-0 left-0 z-10"
-      ></div>
-      <Command shouldFilter={false} className="border">
-        <CommandInput
-          value={search}
-          onValueChange={onValueChange}
-          autoFocus
-          placeholder="欢迎使用 Kit"
-        />
-        {
-          search.length === 0 ? <CommandList></CommandList> : <CommandList className="flex-1"></CommandList>
-        }
-        <CommandFooter>
-          <CommandButton>
-            <Logo
-              className="w-4 h-4 p-1 rounded-full bg-primary mr-1"
-              color="#fff"
-            />
-            设置
-          </CommandButton>
-          <CommandButton>
-            <Logo
-              className="w-4 h-4 p-1 rounded-full bg-primary"
-              color="#fff"
-            />
-          </CommandButton>
-        </CommandFooter>
-      </Command>
-    </div>
+    <Command>
+      <CommandSearch />
+      <CommandResult />
+      <CommandFooter />
+    </Command>
   );
 }
 
