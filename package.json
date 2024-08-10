@@ -4,11 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:primary": "pnpm -F @kit/primary dev",
     "dev": "pnpm tauri dev",
+    "dev:primary": "pnpm -F @kit/primary dev",
     "build:primary": "pnpm -F @kit/primary build",
-    "preview": "vite preview",
-    "tauri": "tauri"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@tauri-apps/cli": ">=2.0.0-rc.0",

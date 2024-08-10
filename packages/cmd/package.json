@@ -1,3 +1,27 @@
 {
-  "name": "@kit/cmd"
+  "name": "@kit/cmd",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "kit-tool",
+  "scripts": {},
+  "dependencies": {
+    "@radix-ui/react-id": "^1.1.0",
+    "@radix-ui/react-primitive": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kit-tool/kit.git",
+    "directory": "@kit/cmd"
+  },
+  "bugs": {
+    "url": "https://github.com/kit-tool/kit/issues"
+  },
+  "homepage": "https://github.com/kit-tool/kit/packages/cmd#readme"
 }
