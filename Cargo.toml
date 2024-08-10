@@ -1,0 +1,10 @@
+[workspace]
+members = [
+  "crates/kit-tauri",
+  "crates/kit-plugin"
+]
+resolver = "2"
+
+[workspace.dependencies]
+
+kit-plugin = { path = "crates/kit-plugin"}

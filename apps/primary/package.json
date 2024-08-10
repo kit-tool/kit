@@ -1,3 +1,23 @@
 {
-  "name": "kit"
+  "name": "@kit/primary",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": ">=2.0.0-rc.0",
+    "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.0.0-rc.2",
+    "@types/node": "^20.14.11",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.3.1"
+  }
 }
