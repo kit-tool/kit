@@ -7,11 +7,21 @@
     "dev": "pnpm tauri dev",
     "dev:primary": "pnpm -F @kit/primary dev",
     "build:primary": "pnpm -F @kit/primary build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fix": "eslint --fix ."
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "@tauri-apps/cli": ">=2.0.0-rc.0",
-    "typescript": "^5.5.4"
+    "@typescript-eslint/parser": "^8.0.1",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1"
   },
   "engines": {
     "node": ">=16.15.1",
