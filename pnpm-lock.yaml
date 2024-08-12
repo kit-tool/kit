@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -42,9 +38,7 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1(eslint@9.9.0)(typescript@5.5.4)
 
-  apps/guide: {}
-
-  apps/primary:
+  packages/kit:
     dependencies:
       '@tauri-apps/api':
         specifier: '>=2.0.0-rc.0'
@@ -64,7 +58,7 @@ importers:
         version: 2.0.0-rc.2
       '@types/node':
         specifier: ^20.14.11
-        version: 20.14.15
+        version: 20.14.11
       '@types/react':
         specifier: ^18.2.15
         version: 18.3.3
@@ -73,12 +67,12 @@ importers:
         version: 18.3.0
       '@vitejs/plugin-react':
         specifier: ^4.2.1
-        version: 4.3.1(vite@5.4.0)
+        version: 4.3.1(vite@5.3.1)
       vite:
         specifier: ^5.3.1
-        version: 5.4.0(@types/node@20.14.15)
+        version: 5.3.1(@types/node@20.14.11)
 
-  packages/cmd:
+  packages/kit-cmd:
     dependencies:
       '@radix-ui/react-id':
         specifier: ^1.1.0
@@ -97,7 +91,9 @@ importers:
         specifier: 18.3.3
         version: 18.3.3
 
-  packages/ui: {}
+  packages/kit-guide: {}
+
+  packages/kit-ui: {}
 
   plugins/kit-settings: {}
 
@@ -995,8 +991,8 @@ packages:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
 
-  /@types/node@20.14.15:
-    resolution: {integrity: sha512-Fz1xDMCF/B00/tYSVMlmK7hVeLh7jE5f3B7X1/hmV0MJBwE27KlS7EvD/Yp+z1lm8mVhwV5w+n8jOZG8AfTlKw==}
+  /@types/node@20.14.11:
+    resolution: {integrity: sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1142,7 +1138,7 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@vitejs/plugin-react@4.3.1(vite@5.4.0):
+  /@vitejs/plugin-react@4.3.1(vite@5.3.1):
     resolution: {integrity: sha512-m/V2syj5CuVnaxcUJOQRel/Wr31FFXRFlnOoq1TVtkCxsY5veGMTEmpWHndrhB2U8ScHtCQB1e+4hWYExQc6Lg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1153,7 +1149,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.25.2)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.0(@types/node@20.14.15)
+      vite: 5.3.1(@types/node@20.14.11)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2944,8 +2940,8 @@ packages:
       punycode: 2.3.1
     dev: true
 
-  /vite@5.4.0(@types/node@20.14.15):
-    resolution: {integrity: sha512-5xokfMX0PIiwCMCMb9ZJcMyh5wbBun0zUzKib+L65vAZ8GY9ePZMXxFrHbr/Kyll2+LSCY7xtERPpxkBDKngwg==}
+  /vite@5.3.1(@types/node@20.14.11):
+    resolution: {integrity: sha512-XBmSKRLXLxiaPYamLv3/hnP/KXDai1NDexN0FpkTaZXTfycHvkRHoenpgl/fvuK/kPbB6xAgoyiryAhQNxYmAQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -2953,7 +2949,6 @@ packages:
       less: '*'
       lightningcss: ^1.21.0
       sass: '*'
-      sass-embedded: '*'
       stylus: '*'
       sugarss: '*'
       terser: ^5.4.0
@@ -2966,8 +2961,6 @@ packages:
         optional: true
       sass:
         optional: true
-      sass-embedded:
-        optional: true
       stylus:
         optional: true
       sugarss:
@@ -2975,7 +2968,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.14.15
+      '@types/node': 20.14.11
       esbuild: 0.21.5
       postcss: 8.4.41
       rollup: 4.20.0
@@ -3053,3 +3046,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
