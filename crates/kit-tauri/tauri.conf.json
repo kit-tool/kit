@@ -6,7 +6,7 @@
     "beforeDevCommand": "pnpm dev:primary",
     "devUrl": "http://localhost:2024",
     "beforeBuildCommand": "pnpm build:primary",
-    "frontendDist": "../../apps/primary/dist"
+    "frontendDist": "../../packages/kit/dist/"
   },
   "app": {
     "windows": [
@@ -30,6 +30,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "resources": ["./page", "./plugins"],
     "icon": [
       "icons/logo.png",
       "icons/logo@2x.png",

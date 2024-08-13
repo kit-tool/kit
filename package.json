@@ -7,7 +7,6 @@
     "dev": "pnpm tauri dev",
     "dev:primary": "pnpm -F kit dev",
     "build:primary": "pnpm -F kit build",
-    "preview": "vite preview",
     "fix": "eslint --fix ."
   },
   "devDependencies": {

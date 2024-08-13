@@ -13,6 +13,9 @@ dist
 dist-ssr
 *.local
 
+crates/kit-tauri/page
+crates/kit-tauri/plugins
+
 /gen/schemas
 
 # Editor directories and files
