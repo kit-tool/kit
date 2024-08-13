@@ -27,3 +27,5 @@ crates/kit-tauri/plugins
 *.njsproj
 *.sln
 *.sw?
+
+*storybook.log

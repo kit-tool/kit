@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "pnpm tauri dev",
     "dev:primary": "pnpm -F kit dev",
+    "dev:storybook": "pnpm -F @kit/ui storybook",
     "build:primary": "pnpm -F kit build",
     "build:lib": "turbo run --filter @kit/cmd build --no-daemon",
     "build:watch": "turbo watch --filter @kit/cmd build",
