@@ -12,6 +12,7 @@ target
 dist
 dist-ssr
 *.local
+.turbo
 
 crates/kit-tauri/page
 crates/kit-tauri/plugins
