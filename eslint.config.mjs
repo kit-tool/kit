@@ -37,6 +37,7 @@ export default tsEslint.config(
       eqeqeq: ['error', 'always'],
       'react/prop-types': 'off',
       'react/no-unknown-property': 'off',
+      'react/react-in-jsx-scope': 'off',
       // 关闭不能使用 any
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': [
