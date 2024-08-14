@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-// import tailwindcss from 'tailwindcss';
+import tailwindcss from 'tailwindcss';
 
 export default defineConfig(async () => ({
   plugins: [react()],
@@ -20,7 +20,7 @@ export default defineConfig(async () => ({
   },
   css: {
     postcss: {
-      // plugins: [tailwindcss]
+      plugins: [tailwindcss],
     },
   },
 }));

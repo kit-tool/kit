@@ -9,7 +9,9 @@
     "dev:storybook": "pnpm -F @kit/ui storybook",
     "build:primary": "pnpm -F kit build",
     "build:lib": "turbo run --filter @kit/cmd build --no-daemon",
+    "build:ui": "pnpm -F @kit/ui build",
     "build:watch": "turbo watch --filter @kit/cmd build",
+    "build:storybook": "pnpm -F @kit/ui build-storybook",
     "fix": "eslint --fix .",
     "postinstall": "pnpm build:lib"
   },

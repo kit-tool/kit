@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -50,6 +46,9 @@ importers:
 
   packages/kit:
     dependencies:
+      '@kit/ui':
+        specifier: workspace:*
+        version: link:../kit-ui
       '@tauri-apps/api':
         specifier: '>=2.0.0-rc.0'
         version: 2.0.0-rc.0
@@ -62,6 +61,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.9)
     devDependencies:
       '@tauri-apps/cli':
         specifier: 2.0.0-rc.2
@@ -78,6 +80,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.3.1(vite@5.3.1)
+      tailwindcss:
+        specifier: ^3.4.9
+        version: 3.4.9
       vite:
         specifier: ^5.3.1
         version: 5.3.1(@types/node@20.14.11)
@@ -7684,3 +7689,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

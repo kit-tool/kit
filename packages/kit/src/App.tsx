@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { Button } from '@kit/ui/Button';
 
 function App() {
-
-  return (<div>文字</div>);
+  return <Button>文字</Button>;
 }
 
 export default App;

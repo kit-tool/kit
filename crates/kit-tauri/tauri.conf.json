@@ -30,7 +30,6 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "resources": ["./page", "./plugins"],
     "icon": [
       "icons/logo.png",
       "icons/logo@2x.png",
