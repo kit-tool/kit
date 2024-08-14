@@ -1,0 +1,5 @@
+[package]
+name = "kit-api"
+version = "0.0.0"
+authors = ["kit-tool"]
+edition = "2021"
