@@ -5,34 +5,25 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm tauri dev",
-    "dev:primary": "pnpm -F kit dev",
-    "dev:storybook": "pnpm -F @kit/ui storybook",
-    "build:primary": "pnpm -F kit build",
-    "build:lib": "turbo run --filter @kit/cmd build --no-daemon",
-    "build:ui": "pnpm -F @kit/ui build",
-    "build:watch": "turbo watch --filter @kit/cmd build",
-    "build:storybook": "pnpm -F @kit/ui build-storybook",
-    "fix": "eslint --fix .",
-    "postinstall": "pnpm build:lib"
+    "dev:kit": "pnpm -F kit dev",
+    "build:kit": "pnpm -F kit build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.9.0",
-    "@tauri-apps/cli": ">=2.0.0-rc.0",
-    "@typescript-eslint/parser": "^8.0.1",
-    "eslint": "^9.9.0",
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.35.0",
-    "globals": "^15.9.0",
-    "prettier": "^3.3.3",
-    "tsup": "^8.2.4",
-    "turbo": "^2.0.12",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.0.1"
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "prettier": "^3.4.1",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.15.0",
+    "@tauri-apps/cli": "^2"
   },
   "engines": {
     "node": ">=16.15.1",
     "pnpm": ">=8.1.0"
   },
-  "packageManager": "pnpm@8.3.1"
+  "packageManager": "pnpm@9.0.0"
 }

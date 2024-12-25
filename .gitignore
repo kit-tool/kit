@@ -12,10 +12,6 @@ target
 dist
 dist-ssr
 *.local
-.turbo
-
-crates/kit-tauri/page
-crates/kit-tauri/plugins
 
 /gen/schemas
 
@@ -27,5 +23,3 @@ crates/kit-tauri/plugins
 *.njsproj
 *.sln
 *.sw?
-
-*storybook.log

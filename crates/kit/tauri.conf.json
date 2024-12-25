@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "kit",
+  "version": "0.1.0",
+  "identifier": "com.kit-tool.app",
+  "build": {
+    "beforeDevCommand": "pnpm dev:kit",
+    "devUrl": "http://localhost:4000",
+    "beforeBuildCommand": "pnpm build:kit",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "search",
+        "width": 800,
+        "height": 100,
+        "decorations": false,
+        "skipTaskbar": true,
+        "minWidth": 800,
+        "minHeight": 100
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/logo.png",
+      "icons/logo64x64.png",
+      "icons/logo96x96.png",
+      "icons/logo128x128.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
