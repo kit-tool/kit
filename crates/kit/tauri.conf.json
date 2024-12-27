@@ -10,17 +10,6 @@
     "frontendDist": "../dist"
   },
   "app": {
-    "windows": [
-      {
-        "label": "search",
-        "width": 800,
-        "height": 100,
-        "decorations": false,
-        "skipTaskbar": true,
-        "minWidth": 800,
-        "minHeight": 100
-      }
-    ],
     "security": {
       "csp": null
     }

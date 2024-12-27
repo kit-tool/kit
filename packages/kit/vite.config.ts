@@ -1,5 +1,8 @@
 import { defineConfig } from 'vite';
+import path from 'path';
 import react from '@vitejs/plugin-react-swc';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -26,6 +29,16 @@ export default defineConfig(async () => ({
     watch: {
       // 3. tell vite to ignore watching `src-tauri`
       ignored: ['**/crates/**'],
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss, autoprefixer],
     },
   },
 }));
