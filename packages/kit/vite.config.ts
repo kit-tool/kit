@@ -41,4 +41,14 @@ export default defineConfig(async () => ({
       plugins: [tailwindcss, autoprefixer],
     },
   },
+  build: {
+    outDir: path.resolve(__dirname, '../../dist'),
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        onboarding: path.resolve(__dirname, 'onboarding.html'),
+        tray: path.resolve(__dirname, 'tray.html'),
+      },
+    },
+  },
 }));

@@ -7,6 +7,8 @@ mod tray;
 
 pub fn run() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_positioner::init())
         .setup(move |app| {
             let win_width = 800.;
             let win_height = 70.;
@@ -60,7 +62,6 @@ pub fn run() {
 
             Ok(())
         })
-        .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -7,7 +7,7 @@
     "beforeDevCommand": "pnpm dev:kit",
     "devUrl": "http://localhost:4000",
     "beforeBuildCommand": "pnpm build:kit",
-    "frontendDist": "../dist"
+    "frontendDist": "../../dist"
   },
   "app": {
     "security": {

@@ -1855,6 +1855,41 @@
           "description": "Denies the reveal_item_in_dir command without any pre-configured scope.",
           "type": "string",
           "const": "opener:deny-reveal-item-in-dir"
+        },
+        {
+          "description": "Allows the moveWindow and handleIconState APIs",
+          "type": "string",
+          "const": "positioner:default"
+        },
+        {
+          "description": "Enables the move_window command without any pre-configured scope.",
+          "type": "string",
+          "const": "positioner:allow-move-window"
+        },
+        {
+          "description": "Enables the move_window_constrained command without any pre-configured scope.",
+          "type": "string",
+          "const": "positioner:allow-move-window-constrained"
+        },
+        {
+          "description": "Enables the set_tray_icon_state command without any pre-configured scope.",
+          "type": "string",
+          "const": "positioner:allow-set-tray-icon-state"
+        },
+        {
+          "description": "Denies the move_window command without any pre-configured scope.",
+          "type": "string",
+          "const": "positioner:deny-move-window"
+        },
+        {
+          "description": "Denies the move_window_constrained command without any pre-configured scope.",
+          "type": "string",
+          "const": "positioner:deny-move-window-constrained"
+        },
+        {
+          "description": "Denies the set_tray_icon_state command without any pre-configured scope.",
+          "type": "string",
+          "const": "positioner:deny-set-tray-icon-state"
         }
       ]
     },
