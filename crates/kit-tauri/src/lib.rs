@@ -1,9 +1,11 @@
+use core::tray;
+
 use tauri::{
     window::{Effect, EffectsBuilder, WindowBuilder},
     LogicalPosition, PhysicalPosition, PhysicalSize, WebviewBuilder, WebviewUrl, WindowEvent,
 };
 
-mod tray;
+mod core;
 
 pub fn run() {
     tauri::Builder::default()
@@ -51,7 +53,9 @@ pub fn run() {
             window.clone().on_window_event(move |event| match event {
                 WindowEvent::Resized(size) => {
                     let webviews = window.webviews();
-                    println!("窗口拖动: {:#?}", size);
+                    webviews
+                        .iter()
+                        .for_each(|webview| println!("窗口label: {}", webview.label()));
                 }
                 // tauri bug 等待新版本修复
                 // WindowEvent::Focused(false) => {
