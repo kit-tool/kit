@@ -5,33 +5,25 @@ use tauri::{
 use tauri_plugin_positioner::{Position, WindowExt};
 
 /// 创建系统托盘图标和系统托盘菜单
-///
-/// ## 具体菜单列表
-/// * 帮助文档
-/// * 开发文档
-/// * 问题反馈
-/// * 关于 Kit
-/// * 系统设置
-/// * 退出 Kit
 pub fn create_tray<R: Runtime>(app: &AppHandle<R>) -> tauri::Result<()> {
-    let window = WebviewWindowBuilder::new(app, "system-tray", WebviewUrl::App("tray.html".into()))
-        .inner_size(80., 350.)
-        .always_on_top(true)
-        .resizable(false)
-        .decorations(false)
-        .skip_taskbar(true)
-        .visible(false)
-        .build()?;
+    let webview_window =
+        WebviewWindowBuilder::new(app, "system-tray", WebviewUrl::App("/tray".into()))
+            .inner_size(80., 350.)
+            .always_on_top(true)
+            .resizable(false)
+            .decorations(false)
+            .skip_taskbar(true)
+            .visible(false)
+            .build()?;
 
-    let window_ = window.clone();
-
-    window.on_window_event(move |event| {
+    webview_window.clone().on_window_event(move |event| {
+        println!("{:#?}", event);
         if let WindowEvent::Focused(false) = event {
-            window_.hide().ok();
+            webview_window.hide().ok();
         }
     });
 
-    TrayIconBuilder::with_id("search")
+    TrayIconBuilder::with_id("main")
         .tooltip("Kit Tool")
         .icon(app.default_window_icon().unwrap().clone())
         .on_tray_icon_event(|tray, event| {
@@ -44,7 +36,7 @@ pub fn create_tray<R: Runtime>(app: &AppHandle<R>) -> tauri::Result<()> {
                     ..
                 } => {
                     let app = tray.app_handle();
-                    if let Some(window) = app.get_webview_window("search") {
+                    if let Some(window) = app.get_window("main") {
                         let _ = window.show();
                         let _ = window.set_focus();
                     }
@@ -68,6 +60,7 @@ fn position_tray<R: Runtime>(app: &AppHandle<R>) -> tauri::Result<()> {
         window.move_window(Position::TrayLeft)?;
         window.show()?;
         window.set_focus()?;
+        println!("是否执行");
     }
 
     Ok(())

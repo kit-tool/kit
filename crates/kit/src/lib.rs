@@ -1,6 +1,6 @@
 use tauri::{
-    window::{Effect, EffectsBuilder},
-    WebviewUrl, WebviewWindowBuilder,
+    window::{Effect, EffectsBuilder, WindowBuilder},
+    LogicalPosition, PhysicalPosition, PhysicalSize, WebviewBuilder, WebviewUrl, WindowEvent,
 };
 
 mod tray;
@@ -10,55 +10,59 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_positioner::init())
         .setup(move |app| {
-            let win_width = 800.;
-            let win_height = 70.;
+            let width = 750.;
+            let height = 55.;
 
             let effects = EffectsBuilder::new()
                 .effects(vec![Effect::Acrylic, Effect::Blur])
                 .build();
 
-            let mut window_builder =
-                WebviewWindowBuilder::new(app, "search", WebviewUrl::default());
-
-            window_builder = window_builder
-                // 设置窗口大小
-                .inner_size(win_width, win_height)
-                // 设置窗口不可缩放
+            let window = WindowBuilder::new(app, "main")
+                .inner_size(width, height)
                 .resizable(false)
-                // 设置窗口无标题栏
                 .decorations(false)
-                .theme(Some(tauri::Theme::Dark))
-                // 设置窗口在任务栏隐藏图标
-                .skip_taskbar(true)
-                // 设置窗口透明背景
                 .transparent(true)
-                // 设置窗口磨砂背景
                 .effects(effects)
-                // 设置窗口初始不可见
-                .visible(false);
+                .min_inner_size(width, height)
+                .center()
+                .visible(false)
+                .skip_taskbar(true)
+                // .always_on_top(true)
+                .build()?;
 
+            // 窗口物理像素
+            let window_size = window.inner_size()?;
+
+            // 窗口定位
             if let Some(monitor) = app.primary_monitor()? {
                 let monitor_size = monitor.size();
-                let monitor_scale = monitor.scale_factor();
-                window_builder = window_builder.position(
-                    (monitor_size.width as f64 - win_width * monitor_scale) / 2.,
-                    (monitor_size.height as f64 - win_height * monitor_scale - 400.) / 2.,
-                );
+                window.set_position(PhysicalPosition::new(
+                    (monitor_size.width - window_size.width) / 2,
+                    (monitor_size.height - window_size.height - 400) / 2,
+                ))?;
             }
 
-            let _ = window_builder.build()?;
+            window.add_child(
+                WebviewBuilder::new("search", WebviewUrl::default()).transparent(true),
+                LogicalPosition::new(0., 0.),
+                PhysicalSize::new(window_size.width - 1, window_size.height - 1),
+            )?;
+
+            window.clone().on_window_event(move |event| match event {
+                WindowEvent::Resized(size) => {
+                    let webviews = window.webviews();
+                    println!("窗口拖动: {:#?}", size);
+                }
+                // tauri bug 等待新版本修复
+                // WindowEvent::Focused(false) => {
+                //     window.hide().ok();
+                // }
+                _ => {}
+            });
 
             // 创建系统托盘
             let handle = app.handle();
             tray::create_tray(handle)?;
-
-            // 失去焦点隐藏
-            // let webview_ = webview.clone();
-            // webview.on_window_event(move |event| {
-            //     if let WindowEvent::Focused(false) = event {
-            //         let _ = webview_.hide();
-            //     }
-            // });
 
             Ok(())
         })
