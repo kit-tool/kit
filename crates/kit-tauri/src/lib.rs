@@ -1,5 +1,6 @@
 use core::tray;
 
+use commands::set_window_size;
 use tauri::{
     window::{Effect, EffectsBuilder, WindowBuilder},
     LogicalPosition, PhysicalPosition, PhysicalSize, WebviewBuilder, WebviewUrl, WindowEvent,
@@ -7,13 +8,15 @@ use tauri::{
 
 mod core;
 
+mod commands;
+
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_positioner::init())
         .setup(move |app| {
             let width = 750.;
-            let height = 55.;
+            let height = 60.;
 
             let effects = EffectsBuilder::new()
                 .effects(vec![Effect::Acrylic, Effect::Blur])
@@ -70,7 +73,7 @@ pub fn run() {
 
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![])
+        .invoke_handler(tauri::generate_handler![set_window_size])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
