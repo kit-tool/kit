@@ -27,25 +27,28 @@ const Search: React.FC = () => {
   };
 
   return (
-    <Command onValueChange={(value) => console.log(value)} shouldFilter={false}>
-      <CommandInput value={search} onValueChange={handleSearch} placeholder="请输入需要搜索的内容" />
-      <CommandList hidden={state !== 'list'}>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>Calendar</CommandItem>
-          <CommandItem>Search Emoji</CommandItem>
-          <CommandItem>Calculator</CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Settings">
-          <CommandItem>Profile</CommandItem>
-          <CommandItem>Billing</CommandItem>
-          <CommandItem>Settings</CommandItem>
-        </CommandGroup>
-      </CommandList>
-      <div hidden={state !== 'view'}></div>
-      <CommandFooter>底部栏</CommandFooter>
-    </Command>
+    <>
+      <div className="fixed w-full h-3 z-50" data-tauri-drag-region />
+      <Command onValueChange={(value) => console.log(value)} shouldFilter={false}>
+        <CommandInput value={search} onValueChange={handleSearch} placeholder="请输入需要搜索的内容" />
+        <CommandList hidden={state !== 'list'}>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Suggestions">
+            <CommandItem>Calendar</CommandItem>
+            <CommandItem>Search Emoji</CommandItem>
+            <CommandItem>Calculator</CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Settings">
+            <CommandItem>Profile</CommandItem>
+            <CommandItem>Billing</CommandItem>
+            <CommandItem>Settings</CommandItem>
+          </CommandGroup>
+        </CommandList>
+        <div hidden={state !== 'view'}></div>
+        <CommandFooter>底部栏</CommandFooter>
+      </Command>
+    </>
   );
 };
 

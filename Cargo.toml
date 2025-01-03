@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/kit-tauri"]
+members = ["crates/kit-tauri", "crates/kit-settings", "crates/kit-plugin"]
 resolver = "2"
 
 [workspace.package]
@@ -9,3 +9,10 @@ categories = ["tools"]
 license = "MIT"
 edition = "2021"
 rust-version = "1.77.2"
+
+[workspace.dependencies]
+
+tokio = { version = "1.42.0", default-features = false }
+
+kit-plugin = { path = "crates/kit-plugin" }
+kit-settings = { path = "crates/kit-plugin" }

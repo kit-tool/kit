@@ -60,7 +60,6 @@ fn position_tray<R: Runtime>(app: &AppHandle<R>) -> tauri::Result<()> {
         window.move_window(Position::TrayLeft)?;
         window.show()?;
         window.set_focus()?;
-        println!("是否执行");
     }
 
     Ok(())

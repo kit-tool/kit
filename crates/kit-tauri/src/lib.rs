@@ -1,22 +1,20 @@
 use core::tray;
 
-use commands::set_window_size;
 use tauri::{
     window::{Effect, EffectsBuilder, WindowBuilder},
     LogicalPosition, PhysicalPosition, PhysicalSize, WebviewBuilder, WebviewUrl, WindowEvent,
 };
 
+mod cmd;
 mod core;
-
-mod commands;
 
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_positioner::init())
         .setup(move |app| {
-            let width = 750.;
-            let height = 60.;
+            let width = 800.;
+            let height = 90.;
 
             let effects = EffectsBuilder::new()
                 .effects(vec![Effect::Acrylic, Effect::Blur])
@@ -53,27 +51,23 @@ pub fn run() {
                 PhysicalSize::new(window_size.width - 1, window_size.height - 1),
             )?;
 
-            window.clone().on_window_event(move |event| match event {
-                WindowEvent::Resized(size) => {
-                    let webviews = window.webviews();
-                    webviews
-                        .iter()
-                        .for_each(|webview| println!("窗口label: {}", webview.label()));
-                }
-                // tauri bug 等待新版本修复
-                // WindowEvent::Focused(false) => {
-                //     window.hide().ok();
-                // }
-                _ => {}
-            });
-
             // 创建系统托盘
             let handle = app.handle();
             tray::create_tray(handle)?;
 
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![set_window_size])
+        .invoke_handler(tauri::generate_handler![cmd::window::set_window_size])
+        // 统一处理事件
+        .on_window_event(|window, event| match event {
+            WindowEvent::Resized(size) => {
+                println!("{} 窗口触发了窗口缩放事件: {:#?}", window.label(), size);
+            }
+            WindowEvent::Focused(focused) => {
+                println!("{} 窗口触发了窗口缩放事件: {:#?}", window.label(), focused);
+            }
+            _ => {}
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
